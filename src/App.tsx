@@ -1,11 +1,18 @@
+import '@mantine/core/styles.css';
+import { MantineProvider } from '@mantine/core';
+import { HomePage } from './pages/HomePage/HomePage';
 
-function App() {
+
+const App = () => {
 
   return (
-    <>
-      <h1>hello</h1>
-    </>
+    <MantineProvider> 
+      <HomePage/>
+    </MantineProvider>
   )
 }
+    
+export default App;
 
-export default App
+
+

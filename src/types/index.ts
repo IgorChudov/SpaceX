@@ -43,12 +43,3 @@ export interface OverlayProps {
   onClose: () => void;
 }
 
-interface UseLaunchesReturn {
-  launches: Launch[];
-  isLoading: boolean;
-  error: string | null;
-  selectedLaunch: Launch | null;
-  isModalOpen: boolean;
-  openModal: (launch: Launch) => void;
-  closeModal: () => void;
-}

@@ -2,16 +2,16 @@
 
 ## https://igorchudov.github.io/SpaceX/
 
-## Скрипты для запуска:
+# Скрипты для запуска:
 
-# npm run dev - дев
+## npm run dev - дев
 
-# npm run build - билд
+## npm run build - билд
 
-# npm run lint - линт
+## npm run lint - линт
 
-# npm run preview - превью
+## npm run preview - превью
 
-# npm run test - запуск тестов
+## npm run test - запуск тестов
 
-# npm run deploy - Деплой на гитхаб
+## npm run deploy - Деплой на гитхаб

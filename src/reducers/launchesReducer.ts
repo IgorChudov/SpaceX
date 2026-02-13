@@ -1,4 +1,6 @@
-export const initialState = {
+import type { LaunchesState, LaunchesAction } from '../types';
+
+export const initialState: LaunchesState = {
   launches: [],
   isLoading: false,
   error: null,
@@ -6,7 +8,7 @@ export const initialState = {
   isModalOpen: false
 };
 
-export const launchesReducer = (state, action) => {
+export const launchesReducer = (state: LaunchesState, action: LaunchesAction): LaunchesState => {
   switch (action.type) {
     case 'fetch_init':
       return { ...state, isLoading: true, error: null };

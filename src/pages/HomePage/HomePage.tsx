@@ -1,16 +1,21 @@
 import { Container, Text, SimpleGrid, Flex, Loader, Alert } from '@mantine/core';
-
 import { useLaunches } from "../../hooks/useLaunches"
 import { LaunchCard } from '../../components/LaunchCard/LaunchCard';
 import { LaunchModal } from '../../components/LaunchModal/LaunchModal';
+import { useCallback } from "react";
+import type { Launch } from '../../types';
 
 
 export const HomePage = () => {
   const { launches, isLoading, error, selectedLaunch, isModalOpen, openModal, closeModal } = useLaunches();
 
+  const handleSeeMore = useCallback((launch: Launch) => {
+    openModal(launch);
+  }, [openModal]);
+
   return (
-    <Container size={1200} py='xl'>
-      <Text component='h1' size='xl' fw={700} mb='lg' ta='center'>
+    <Container size={800} py='xl'>
+      <Text component='h1' size='xl' fw={700} fz={38} mb='lg' ta='center'>
         SpaceX Launches 2020
       </Text>
 
@@ -27,8 +32,8 @@ export const HomePage = () => {
 
       {!isLoading && !error && (
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 3 }}>
-          {launches.map((launch) => (
-            <LaunchCard key={launch.mission_name} launch={launch} onSeeMore={openModal} />
+          {launches.map((launch: Launch) => (
+            <LaunchCard key={launch.mission_name} launch={launch} onSeeMore={handleSeeMore} />
           ))}
         </SimpleGrid>
       )}

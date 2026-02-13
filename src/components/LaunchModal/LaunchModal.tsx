@@ -1,17 +1,16 @@
 import { createPortal } from 'react-dom';
-import styles from './LaunchModal.module.css'
 import { Overlay } from "../Overlay/Overlay";
-import { Modal, Image, Text, Button, Flex, } from "@mantine/core";
+import { Image, Text, Flex, } from "@mantine/core";
 import { useEffect } from 'react';
+import type { LaunchModalProps } from '../../types';
+import styles from './LaunchModal.module.css'
 
-const modalElement = document.getElementById('modal')
+const modalElement = document.getElementById('modal') || document.body
 
-export const LaunchModal = ({ launch, onClose }) => {
-
-  if (!launch) return null;
+export const LaunchModal = ({ launch, onClose }: LaunchModalProps) => {
 
   useEffect(() => {
-    const onEsc = (e) => e.code === 'Escape' && onClose();
+    const onEsc = (e: KeyboardEvent) => e.code === 'Escape' && onClose();
     document.addEventListener('keydown', onEsc);
     document.body.style.overflow = 'hidden';
 
@@ -21,6 +20,8 @@ export const LaunchModal = ({ launch, onClose }) => {
     };
   }, [onClose])
 
+  if (!launch) return null;
+
   return createPortal(
     <>
       <div className={styles.modal}>
@@ -29,7 +30,7 @@ export const LaunchModal = ({ launch, onClose }) => {
           <Text component='h2' size='xl' fw={700} ta='center'>
               {launch.mission_name}
           </Text>
-          <button onClick={() => {onClose()}}>✕</button>
+          <button className={styles.btn} onClick={() => {onClose()}}>✕</button>
         </Flex>
 
         <Flex direction='column' gap='md'>

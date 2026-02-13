@@ -1,6 +1,8 @@
 import { Card, Image, Text, Button, Flex } from '@mantine/core';
+import type { LaunchCardProps } from '../../types';
+import { memo } from "react";
 
-export const LaunchCard = ({ launch, onSeeMore }) => {
+export const LaunchCard = memo(({ launch, onSeeMore }: LaunchCardProps) => {
   return (
     <Card shadow="sm" padding="md" radius="md" withBorder>
       <Flex
@@ -20,7 +22,7 @@ export const LaunchCard = ({ launch, onSeeMore }) => {
         />
       </Card.Section>
 
-      <Text fw={500}>{launch.mission_name}</Text>
+      <Text fw={500} lineClamp={1}>{launch.mission_name}</Text>
 
       <Text size="sm" c="dimmed">
         {launch.rocket?.rocket_name}
@@ -32,4 +34,4 @@ export const LaunchCard = ({ launch, onSeeMore }) => {
       </Flex>
     </Card>
   );
-}
+});

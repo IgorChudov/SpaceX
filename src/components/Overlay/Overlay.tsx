@@ -1,5 +1,5 @@
-import styles from './Overlay.module.css';
 import type { OverlayProps } from '../../types';
+import styles from './Overlay.module.css';
 
 export const Overlay = ({ onClose }: OverlayProps) => {
   return (
